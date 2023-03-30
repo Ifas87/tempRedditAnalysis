@@ -1,6 +1,6 @@
 import praw
 import config
-from nrclex import NRCLex
+from nrclex import NRCLex 
 
 reddit = praw.Reddit(client_id=config.client_id, client_secret=config.client_secret, user_agent=config.user_agent)
 
