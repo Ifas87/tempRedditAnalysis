@@ -12,14 +12,20 @@ def index():
     return render_template("index.html")
 
 
-@app.route('/request')
+@app.route('/request', methods=["POST"])
 def handle_request():
-    pass
+    subreddit_name = ''
+
+    if request.method == 'POST':
+        subreddit_name = request.form['subreddit']
+        print(subreddit_name)
+    
+    return redirect(url_for('report'))
 
 
 @app.route('/results')
 def report():
-    pass
+    return render_template("index.html")
 
 
 if (__name__ == '__main__'):
