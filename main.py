@@ -21,7 +21,7 @@ def data_loading(subname, imageSubs=False):
     return bigString
 
 
-def all_analysis(sampleString): 
+def all_analysis(sampleString):  
     text_stuff = NRCLex(sampleString)
     results = text_stuff.raw_emotion_scores
 
