@@ -27,6 +27,7 @@ def all_analysis(sampleString):
 
     return results
 
+
 if __name__ == "__main__":
     strs = data_loading(subname='pics', imageSubs=True)
     summariser = su.LexRankSummarizer(strs, 10)
