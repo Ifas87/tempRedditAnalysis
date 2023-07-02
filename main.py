@@ -9,16 +9,30 @@ from wordcloud import WordCloud
 
 reddit = praw.Reddit(client_id=config.client_id, client_secret=config.client_secret, user_agent=config.user_agent)
 
-def data_loading(subname, imageSubs=False):
+def data_loading(subname, imageSubs=False, classe="1"):
     bigString = ''
     subreddit = reddit.subreddit(subname)
 
     if imageSubs:
-        for submission in subreddit.top(limit=100):
-            bigString += submission.title
+        if classe == "1":
+            for submission in subreddit.top(limit=100):
+                bigString += submission.title
+        elif classe == "2":
+            for submission in subreddit.hot(limit=100):
+                bigString += submission.title
+        elif classe == "3":
+            for submission in subreddit.new(limit=100):
+                bigString += submission.title
     else:
-        for submission in subreddit.top(limit=100):
-            bigString += submission.selftext
+        if classe == "1":
+            for submission in subreddit.top(limit=100):
+                bigString += submission.selftext
+        elif classe == "2":
+            for submission in subreddit.hot(limit=100):
+                bigString += submission.selftext
+        elif classe == "3":
+            for submission in subreddit.new(limit=100):
+                bigString += submission.selftext
     return bigString
 
 
@@ -39,7 +53,7 @@ def all_analysis(sampleString):
     plt.axis("off")
     plt.show()
     return results
-
+ 
 
 if __name__ == "__main__":
     strs = all_analysis(data_loading(subname='pics', imageSubs=True))

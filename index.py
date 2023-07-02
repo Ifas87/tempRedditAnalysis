@@ -20,7 +20,7 @@ def handle_request():
         subreddit_name = request.form['subreddit']
         print(subreddit_name)
     
-    return redirect(url_for('report'))
+    return redirect(url_for('index'))
 
 
 @app.route('/results')
